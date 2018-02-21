@@ -1,0 +1,38 @@
+{
+  "id": "/certbot-dcos",
+  "cpus": 1,
+  "mem": 256,
+  "container": {
+    "docker": {
+      "forcePullImage": true,
+      "image": "grupoabraxas/certbot-dcos:latest",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "protocol": "tcp",
+          "servicePort": <service port>
+        }
+      ],
+      "privileged": false
+    },
+    "type": "DOCKER",
+    "volumes": [
+      {
+        "containerPath": "/etc/letsencrypt",
+        "hostPath": <</shared/path/with/marathon-lb>>,
+        "mode": "RW"
+      }
+    ]
+  },
+  "env": {
+    "CERTBOT_EMAIL": "",
+    "MARATHON_LB_ID": "",
+    "MARATHON_URL": ""
+  },
+  "labels": {
+    "HAPROXY_0_PATH": "/.well-known/acme-challenge",
+    "HAPROXY_0_VHOST": "",
+    "HAPROXY_GROUP": "external"
+  }
+}
