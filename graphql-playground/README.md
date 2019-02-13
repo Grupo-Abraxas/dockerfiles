@@ -4,7 +4,7 @@ Docker image for [graphql-playground](https://github.com/prisma/graphql-playgrou
 
 # Usage 
 
-`docker run --name graphql-playground -d graphql-playground`
+`docker run --name graphql-playground -p 3000:3000 -d grupoabraxas/graphql-playground`
 
 # Environment Variables
 
