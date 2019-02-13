@@ -1,6 +1,6 @@
 # Graphql Playground
 
-Docker image for (graphql-playground)[https://github.com/prisma/graphql-playground].
+Docker image for [graphql-playground](https://github.com/prisma/graphql-playground).
 
 # Usage 
 
