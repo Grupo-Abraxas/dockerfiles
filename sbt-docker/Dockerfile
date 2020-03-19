@@ -1,6 +1,6 @@
 FROM openjdk:8u212-jre-alpine
 
-ENV SBT_VERSION 1.2.8
+ENV SBT_VERSION 1.3.8
 ENV SBT_HOME /usr/local/sbt
 ENV PATH ${PATH}:${SBT_HOME}/bin
 
