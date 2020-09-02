@@ -10,14 +10,19 @@ ENV WAIT_RETRIES=60
 ENV WAIT_BETWEEN=1
 
 WORKDIR /usr
-RUN wget --no-check-certificate -q \
-    https://repo1.maven.org/maven2/org/liquigraph/liquigraph-cli/${LIQUIGRAPH_VERSION}/liquigraph-cli-${LIQUIGRAPH_VERSION}-bin.tar.gz.md5
-RUN wget --no-check-certificate -q \
-    https://repo1.maven.org/maven2/org/liquigraph/liquigraph-cli/${LIQUIGRAPH_VERSION}/liquigraph-cli-${LIQUIGRAPH_VERSION}-bin.tar.gz
-RUN md5sum liquigraph-cli-${LIQUIGRAPH_VERSION}-bin.tar.gz | cut -d " " -f1 > sum
-RUN diff -w sum liquigraph-cli-${LIQUIGRAPH_VERSION}-bin.tar.gz.md5
+RUN apk update && \
+  apk upgrade && \
+  apk --no-cache add \
+  ca-certificates \
+  openssl \
+  libc-dev && \
+  wget https://repo1.maven.org/maven2/org/liquigraph/liquigraph-cli/${LIQUIGRAPH_VERSION}/liquigraph-cli-${LIQUIGRAPH_VERSION}-bin.tar.gz.md5 && \
+  wget https://repo1.maven.org/maven2/org/liquigraph/liquigraph-cli/${LIQUIGRAPH_VERSION}/liquigraph-cli-${LIQUIGRAPH_VERSION}-bin.tar.gz && \
+  md5sum liquigraph-cli-${LIQUIGRAPH_VERSION}-bin.tar.gz | cut -d " " -f1 > sum && \
+  diff -w sum liquigraph-cli-${LIQUIGRAPH_VERSION}-bin.tar.gz.md5 && \
+  tar xzf liquigraph-cli-${LIQUIGRAPH_VERSION}-bin.tar.gz && \
+  rm liquigraph-cli-${LIQUIGRAPH_VERSION}-bin.tar.gz
 
-RUN tar xzf liquigraph-cli-${LIQUIGRAPH_VERSION}-bin.tar.gz
 ENV PATH=$PATH:/usr/liquigraph-cli
 
 ADD ./wait.sh ./wait.sh
