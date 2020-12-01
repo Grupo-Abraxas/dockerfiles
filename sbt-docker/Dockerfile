@@ -6,7 +6,7 @@ ENV PATH ${PATH}:${SBT_HOME}/bin
 
 RUN \
   apk add --no-cache --virtual=.build-dependencies curl bc ca-certificates && \
-  apk add --no-cache bash tar && \
+  apk add --no-cache bash && \
   cd /tmp && \
   curl -fsL https://piccolo.link/sbt-$SBT_VERSION.tgz | tar xfz - -C /usr/local && \
   curl -fsL https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub > /etc/apk/keys/sgerrand.rsa.pub && \
