@@ -1,6 +1,6 @@
-FROM adoptopenjdk/openjdk11:jre-11.0.7_10-alpine
+FROM adoptopenjdk/openjdk11:jre-11.0.10_9-alpine
 
-ENV SBT_VERSION 1.4.4
+ENV SBT_VERSION 1.5.5
 ENV SBT_HOME /usr/local/sbt
 ENV PATH ${PATH}:${SBT_HOME}/bin
 
