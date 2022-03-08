@@ -1,6 +1,6 @@
-FROM adoptopenjdk/openjdk11:jre-11.0.7_10-alpine
+FROM eclipse-temurin:17.0.2_8-jre-alpine
 
-ENV SBT_VERSION 1.4.4
+ENV SBT_VERSION 1.6.2
 ENV SBT_HOME /usr/local/sbt
 ENV PATH ${PATH}:${SBT_HOME}/bin
 
@@ -15,4 +15,4 @@ RUN \
   apk del .build-dependencies && \
   rm -rf /tmp/*
 
-RUN apk add --no-cache docker
+RUN apk add --no-cache docker git
