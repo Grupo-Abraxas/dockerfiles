@@ -9,7 +9,7 @@ on:
 
 env:
   IMAGE_NAME: 'grupoabraxas/sbt-docker'
-  IMAGE_TAG: 'latest'
+  IMAGE_TAG: 'jre-19'
 
 jobs:
   publish:
