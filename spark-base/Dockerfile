@@ -9,4 +9,4 @@ RUN cd Python-3.11.1/ && ./configure --enable-optimizations && make altinstall &
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/local/bin/python3.11 1
 USER ${spark_uid}
 
-ENTRYPOINT ["spark-submit"]
+ENTRYPOINT ["python3"]
