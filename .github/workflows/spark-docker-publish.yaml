@@ -1,0 +1,28 @@
+name: Publish spark-base
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'spark-base/**'
+
+env:
+  IMAGE_NAME: 'grupoabraxas/spark-base'
+  IMAGE_TAG: '3.1.1_py-3.11_hadoop-3'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build Image
+        run: docker build -t $IMAGE_NAME:$IMAGE_TAG ./spark-base
+
+      - name: Docker login
+        run: echo "${{ secrets.DOCKER_TOKEN }}" | docker login --username ${{ secrets.DOCKER_USER }} --password-stdin
+
+      - name: Push image
+        run: docker push $IMAGE_NAME:$IMAGE_TAG
