@@ -9,7 +9,7 @@ on:
 
 env:
   IMAGE_NAME: 'grupoabraxas/spark-base'
-  IMAGE_TAG: '3.1.1_py-3.11.2_hadoop-3_1'
+  IMAGE_TAG: '3.1.1_py-3.10.10_hadoop-3_1'
 
 jobs:
   publish:
