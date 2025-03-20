@@ -1,4 +1,4 @@
-ARG VERSION=1.13-alpine
+ARG VERSION=1.26-alpine
 FROM nginx:${VERSION}
 
 MAINTAINER rrodriguez@grupoabraxas.com
